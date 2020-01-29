@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''status endpoint for API '''
-from flask import Flask
+from flask import Flask, jsonify
 import models
 from models import storage
 from api.v1.views import app_views
@@ -9,10 +9,15 @@ from os import getenv
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
+@app.errorhandler(404)
+def eror_404_error(self):
+    ''' 404 error json format'''
+    return jsonify({"error": "Not found"}), 404
+
 
 @app.teardown_appcontext
 def teardown(self):
-    ''' teardown db '''
+    ''' tear down db '''
     models.storage.close()
 
 

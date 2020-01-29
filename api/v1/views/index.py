@@ -14,7 +14,7 @@ def stats():
     ''' retrieves the number of each object by type'''
     if request.method == 'GET':
         output = {}
-        PLURALS = {
+        classes = {
             "Amenitiy" : "amenities",
             "City" : "cities",
             "Place" : "places",
@@ -22,6 +22,6 @@ def stats():
             "State" : "states",
             "User": "users"
         }
-    for key, value in PLURALS.items():
+    for key, value in classes.items():
         output[value] = storage.count(key)
     return jsonify(output)

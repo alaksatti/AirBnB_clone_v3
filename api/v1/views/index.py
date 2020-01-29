@@ -15,7 +15,7 @@ def stats():
     if request.method == 'GET':
         output = {}
         classes = {
-            "Amenitiy" : "amenities",
+            "Amenity" : "amenities",
             "City" : "cities",
             "Place" : "places",
             "Review" : "reviews",

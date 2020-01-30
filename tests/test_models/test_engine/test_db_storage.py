@@ -67,7 +67,7 @@ test_db_storage.py'])
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
 
-    def test_getfunct(self):
+    def test_get(self):
         """Test get function """
         new_state = State(name="Wakanda")
         new_state.save()
@@ -82,7 +82,7 @@ test_db_storage.py'])
         retrieved_state = models.storage.get('State', 'lmao')
         self.assertEqual(retrieved_state, None)
 
-    def test_countfunct(self):
+    def test_count(self):
         """Test count function"""
         prev_count = models.storage.count()
         prev_class_count = models.storage.count('State')

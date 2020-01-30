@@ -42,6 +42,9 @@ def create_user():
     if not request.get_json():
         return jsonify({'error': 'Not a JSON'}), 400
 
+    if 'email' not in request.get_json():
+        return jsonify({'error': 'Missing email'}), 400
+
     if 'password' not in request.get_json():
         return jsonify({'error': 'Missing password'}), 400
 

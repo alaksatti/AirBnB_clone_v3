@@ -65,6 +65,6 @@ def update_user(user_id):
 
     for k, v in stored_data.items():
         if k not in ['id', 'created_at', 'updated_at']:
-            setattr(retrieved_amenity, k, v)
+            setattr(retrieved_user, k, v)
     storage.save()
     return retrieved_user.to_dict(), 200

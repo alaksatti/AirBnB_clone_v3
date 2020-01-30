@@ -15,7 +15,9 @@ def get_place(city_id):
     if city is None:
         abort(404)
     places = []
-    return jsonify([places.append(place.to_dict()) for place in place.city])
+    for place in city.places:
+        places.append(place.to_dict())
+    return jsonify(places)
 
 
 @app_views.route('/places/<place_id>', methods=['GET'],
@@ -65,10 +67,7 @@ def create_places(city_id):
     if not user:
         abort(404)
 
-    name = data.get('name')
-
-
-    new_place = Place(name=name, user_id=user_id, city_id=city_id)
+    new_place = Place(name=data.get('name'), user_id=user_id, city_id=city_id)
     new_place.save()
     return jsonify(new_place.to_dict()), 201
 

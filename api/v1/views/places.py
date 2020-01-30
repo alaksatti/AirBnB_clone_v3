@@ -81,7 +81,7 @@ def update_place(place_id):
     if not stored_data:
         return jsonify({'error': 'Not a JSON'}), 400
 
-    retrieved_place = storage.get("User", user_id)
+    retrieved_place = storage.get("Place", place_id)
     if retrieved_place is None:
         abort(404)
 
@@ -89,4 +89,4 @@ def update_place(place_id):
         if k not in ['id', 'created_at', 'updated_at']:
             setattr(retrieved_place, k, v)
     storage.save()
-    return retrieved_place.to_dict(), 200
+    return jsonify(retrieved_place.to_dict()), 200

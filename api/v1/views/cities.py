@@ -7,17 +7,18 @@ from models import storage
 from flask import jsonify, abort, request
 
 
-@app_views.route('/states/<state_id>/cities', methods=['GET'], strict_slashes=False)
+@app_views.route('/states/<state_id>/cities', methods=['GET'],
+                 strict_slashes=False)
 def get_city(state_id):
     '''return json of all city objects '''
     state = storage.get('State', state_id)
     if state is None:
         abort(404)
-    cities = []
+    list_of_cities = []
 
     for city in state.cities:
-        cities.append(city.to_dict())
-    return jsonify(cities)
+        list_of_cities.append(city.to_dict())
+    return jsonify(list_of_cities)
 
 
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
@@ -58,7 +59,9 @@ def create_city(state_id):
     if 'name' not in request.get_json():
         return jsonify({'error': 'Missing name'}), 400
 
-    new_city = City(name=stored_data.get('name'), state_id=state_id)
+    name=stored_data.get('name')
+
+    new_city = City(name=name, state_id=state_id)
     new_city.save()
     return jsonify(new_city.to_dict()), 201
 
@@ -78,4 +81,4 @@ def update_city(city_id):
         if k not in ['id', 'created_at', 'updated_at']:
             setattr(retrieved_city, k, v)
     storage.save()
-    return retrieved_city.to_dict(), 200
+    return jsonify(retrieved_city.to_dict()), 200

@@ -9,7 +9,7 @@ from flask import jsonify, abort, request
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'],
                  strict_slashes=False)
-def get_place():
+def get_place(city_id):
     '''return json of all place objects '''
     city = storage.get('City', city_id)
     if city is None:
@@ -44,7 +44,7 @@ def delete_place(place_id):
 
 @app_views.route('/cities/<city_id>/places', methods=['POST'],
                  strict_slashes=False)
-def create_places():
+def create_places(city_id):
     '''create a place'''
     state = storage.get('City', city_id)
     data = request.get_json()

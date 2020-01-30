@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' user file '''
+''' place_amenity file '''
 from api.v1.views import app_views
 from models.amenity import Amenity
 from models.place import Place
@@ -20,7 +20,7 @@ def get_place_amenity(place_id):
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['DELETE'],
                  strict_slashes=False)
-def delete_place_amenity(place_id, review_id):
+def delete_place_amenity(place_id, amenity_id):
     ''' delete amenity based on its id '''
     place = storage.get('Place', place_id)
     if place:

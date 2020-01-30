@@ -30,6 +30,32 @@ class TestFileStorageDocs(unittest.TestCase):
         """Set up for the doc tests"""
         cls.fs_f = inspect.getmembers(FileStorage, inspect.isfunction)
 
+    def test_get(self):
+        """Test get function """
+        new_state = State(name="Wakanda")
+        new_state.save()
+        retrieved_state = models.storage.get('State', new_state.id)
+        self.assertEqual(retrieved_state, new_state)
+        retrieved_state = models.storage.get('State', 5)
+        self.assertEqual(retrieved_state, None)
+        retrieved_state = models.storage.get('State', 2.2)
+        self.assertEqual(retrieved_state, None)
+        retrieved_state = models.storage.get('lol', new_state.id)
+        self.assertEqual(retrieved_state, None)
+        retrieved_state = models.storage.get('State', 'lmao')
+        self.assertEqual(retrieved_state, None)
+
+    def test_count(self):
+        """Test count function"""
+        prev_count = models.storage.count()
+        prev_class_count = models.storage.count('State')
+        new_state = State(name="Wakanda")
+        new_state.save()
+        new_count = models.storage.count()
+        new_class_count = models.storage.count('State')
+        self.assertEqual(new_count, prev_count + 1)
+        self.assertEqual(new_class_count, prev_class_count + 1)
+
     def test_pep8_conformance_file_storage(self):
         """Test that models/engine/file_storage.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
@@ -113,29 +139,3 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
-
-    def test_getfunct(self):
-        """Test get function """
-        new_state = State(name="Wakanda")
-        new_state.save()
-        retrieved_state = models.storage.get('State', new_state.id)
-        self.assertEqual(retrieved_state, new_state)
-        retrieved_state = models.storage.get('State', 5)
-        self.assertEqual(retrieved_state, None)
-        retrieved_state = models.storage.get('State', 2.2)
-        self.assertEqual(retrieved_state, None)
-        retrieved_state = models.storage.get('lol', new_state.id)
-        self.assertEqual(retrieved_state, None)
-        retrieved_state = models.storage.get('State', 'lmao')
-        self.assertEqual(retrieved_state, None)
-
-    def test_countfunct(self):
-        """Test count function"""
-        prev_count = models.storage.count()
-        prev_class_count = models.storage.count('State')
-        new_state = State(name="Wakanda")
-        new_state.save()
-        new_count = models.storage.count()
-        new_class_count = models.storage.count('State')
-        self.assertEqual(new_count, prev_count + 1)
-        self.assertEqual(new_class_count, prev_class_count + 1)

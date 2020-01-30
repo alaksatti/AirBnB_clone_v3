@@ -5,13 +5,14 @@ from models.state import State
 from models import storage
 from flask import jsonify, abort, request
 
-@app_views.route('/states', methods=['GET'], strict_slashes = False)
+
+@app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_state():
     '''return json of all state objects '''
     return jsonify([o.to_dict() for o in storage.all("State").values()])
 
 
-@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes = False)
+@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state_by_id(state_id):
     ''' return a state based on its id '''
     state = storage.get('State', state_id)
@@ -20,7 +21,8 @@ def get_state_by_id(state_id):
     abort(404)
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes = False)
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def delete_state(state_id):
     ''' delete a state based on its id '''
     state = storage.get('State', state_id)
@@ -33,7 +35,7 @@ def delete_state(state_id):
     return jsonify({}), 200
 
 
-@app_views.route('/states', methods=['POST'], strict_slashes = False)
+@app_views.route('/states', methods=['POST'], strict_slashes=False)
 def create_state():
     '''create a state'''
     if not request.get_json():
@@ -47,7 +49,7 @@ def create_state():
     return jsonify(new_state.to_dict()), 201
 
 
-@app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes = False)
+@app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state(state_id):
     """Updates a state object"""
     stored_data = request.get_json()

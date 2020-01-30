@@ -47,11 +47,11 @@ def delete_place(place_id):
 def create_places(city_id):
     '''create a place'''
     state = storage.get('City', city_id)
-    data = request.get_json()
     if not state:
         abort(404)
 
-    if not request.get_json():
+    data = request.get_json()
+    if not data:
         return jsonify({'error': 'Not a JSON'}), 400
 
     if 'user_id' not in request.get_json():

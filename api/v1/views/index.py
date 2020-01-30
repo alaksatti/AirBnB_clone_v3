@@ -4,10 +4,12 @@ from api.v1.views import app_views
 from flask import jsonify, request
 from models import storage
 
+
 @app_views.route('/status')
 def status():
     ''' status of API route '''
     return jsonify({"status": "OK"})
+
 
 @app_views.route('/stats', methods=['GET'])
 def stats():
@@ -15,11 +17,11 @@ def stats():
     if request.method == 'GET':
         output = {}
         classes = {
-            "Amenity" : "amenities",
-            "City" : "cities",
-            "Place" : "places",
-            "Review" : "reviews",
-            "State" : "states",
+            "Amenity": "amenities",
+            "City": "cities",
+            "Place": "places",
+            "Review": "reviews",
+            "State": "states",
             "User": "users"
         }
     for key, value in classes.items():

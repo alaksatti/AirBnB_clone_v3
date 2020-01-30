@@ -26,8 +26,8 @@ def delete_place_amenity(place_id, amenity_id):
     if place:
         amenity = storage.get('Amenity', amenity_id)
         if amenity:
-            if amenity in place.amenity:
-                place.amenity.remove(amenity)
+            if amenity in place.amenities:
+                place.amenities.remove(amenity)
                 storage.save()
                 return jsonify({}), 200
     abort(404)
@@ -41,7 +41,7 @@ def create_place_amenity(place_id, amenity_id):
     if place:
         amenity = storage.get('Amenity', amenity_id)
         if amenity:
-            if amenity in place.amenity:
+            if amenity in place.amenities:
                 return jsonify(amenity.to_dict()), 200
             else:
                 place.amenities.append(amenity)

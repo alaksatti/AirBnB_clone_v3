@@ -18,8 +18,8 @@ def get_place_amenity(place_id):
     return jsonify(amenity)
 
 
-@app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['DELETE'],
-                 strict_slashes=False)
+@app_views.route('/places/<place_id>/amenities/<amenity_id>',
+                 methods=['DELETE'], strict_slashes=False)
 def delete_place_amenity(place_id, amenity_id):
     ''' delete amenity based on its id '''
     place = storage.get('Place', place_id)

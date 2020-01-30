@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 ''' user file '''
 from api.v1.views import app_views
+from models.city import City
 from models.place import Place 
 from models import storage
 from flask import jsonify, abort, request

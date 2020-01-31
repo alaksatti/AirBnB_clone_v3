@@ -150,7 +150,8 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) quit
 8```
 # RESTful Api
-api/
+api/v
+
 ## Bugs
 No known bugs at this time. 
 

@@ -155,7 +155,7 @@ Files:
 amenities.py
 cities.py
 index.py
-place.p
+place.py
 ## Bugs
 No known bugs at this time. 
 

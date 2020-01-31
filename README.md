@@ -149,7 +149,7 @@ EOF  all  create  destroy  help  quit  show  update
 ** no instance found **
 (hbnb) quit
 ```
-# RESTful Ap
+# RESTful Api
 ## Bugs
 No known bugs at this time. 
 

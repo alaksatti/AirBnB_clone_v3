@@ -153,6 +153,7 @@ EOF  all  create  destroy  help  quit  show  update
 api/v1
 Files:
 amenities.py
+cities.py
 ## Bugs
 No known bugs at this time. 
 

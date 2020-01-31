@@ -148,8 +148,9 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) show BaseModel 7da56403-cc45-4f1c-ad32-bfafeb2bb050
 ** no instance found **
 (hbnb) quit
-```
+8```
 # RESTful Api
+api/
 ## Bugs
 No known bugs at this time. 
 

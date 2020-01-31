@@ -157,7 +157,8 @@ cities.py
 index.py
 place.py
 user.py
-place
+place-am
+
 ''' handles 404 error '''
 ## Bugs
 No known bugs at this time. 

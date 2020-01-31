@@ -157,7 +157,7 @@ cities.py
 index.py
 place.py
 user.py
-place-amenities.p
+place-amenities.py
 
 ''' handles 404 error '''
 ## Bugs

@@ -156,7 +156,7 @@ amenities.py
 cities.py
 index.py
 place.py
-u
+us
 ## Bugs
 No known bugs at this time. 
 

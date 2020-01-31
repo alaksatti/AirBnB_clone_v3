@@ -151,6 +151,7 @@ EOF  all  create  destroy  help  quit  show  update
 8```
 # RESTful Api
 api/v1
+Files:
 
 ## Bugs
 No known bugs at this time. 

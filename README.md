@@ -154,7 +154,7 @@ api/v1
 Files:
 amenities.py
 cities.py
-ind
+inde
 ## Bugs
 No known bugs at this time. 
 

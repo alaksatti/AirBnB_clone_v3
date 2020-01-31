@@ -157,7 +157,7 @@ cities.py
 index.py
 place.py
 user.py
-place-amen
+place-ameni
 
 ''' handles 404 error '''
 ## Bugs
